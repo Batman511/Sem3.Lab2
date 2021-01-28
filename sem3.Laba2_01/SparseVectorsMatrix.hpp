@@ -2,10 +2,37 @@
 #include "BinaryTree.h"
 #include "ArraySequence.h"
 #include <fstream>
+#include "SparseVectorMatrix.h"
 #include <sstream>
 #include <iostream>
 #include <utility>
 using namespace std;
+
+//преобразование вектора и матрицы
+template <class T, class TValue>
+IDictionary<int, TValue>* MakeSparseVector(ArraySequence<T>* vector) {
+	IDictionary<int, TValue>* IDic = new IDictionary<int, TValue>();
+	for (long i = 0; i < vector->GetLength(); i++) {
+		if (vector->Get(i) != 0) {
+			IDic->Insert(i, vector->Get(i));
+		}
+	}
+	return IDic;
+}
+
+
+IDictionary<pair<long, long>, string>* MakeSparseMatrix(ArraySequence<ArraySequence<string>*>* matrix) {
+	IDictionary<pair<long, long>, string>* IDic = new IDictionary<pair<long, long>, string>();
+	for (long i = 0; i < matrix->GetLength(); i++) {
+		for (long j = 0; j < (matrix->Get(i))->GetLength(); j++)
+			if (matrix->Get(i)->Get(j) != "0") {
+				pair<long, long> index = make_pair(i, j);
+				IDic->Insert(index, matrix->Get(i)->Get(j));
+			}
+	}
+	return IDic;
+}
+
 
 template <class T>
 void Print(Sequence<T>* seq, const int length) {
@@ -34,8 +61,6 @@ ArraySequence<T>* New_vector() {
 
 	return vector;
 }
-
-
 
 //получение матрицы
 template <class T>
@@ -79,3 +104,23 @@ ArraySequence<ArraySequence<string>*>* New_matrix() {
 }
 
 
+///////////////////подумать/////////////
+/*
+void PrintKeyValue(TreeNode<int, int>* Node, int lvl) {
+	if (Node != nullptr) {
+		PrintKeyValue(Node->GetRight(), lvl + 1);
+		cout << "[" << Node->GetKey() << "] = " << Node->GetValue() << "\n";
+		PrintKeyValue(Node->GetLeft(), lvl + 1);
+	}
+}; */
+/*
+template <class TValue>
+void PrintSparseVector(IDictionary<int, TValue>* IDic) {
+	PrinKeyValue(IDic->GetTree(),IDic->GetTree()->height());
+}
+
+template <class TValue>
+void PrintSparseMatrix(IDictionary<pair<long, long>, TValue>* IDic) {
+	IDic->PrintKeyValue();
+}
+*/

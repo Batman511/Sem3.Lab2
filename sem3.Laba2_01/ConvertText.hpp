@@ -2,6 +2,7 @@
 #include "BinaryTree.h"
 #include "List_Sequence.h"
 #include <iostream>
+//#include "ConvertText.h"
 #include <fstream>
 #include <string>
 //#include <algorithm>
@@ -47,8 +48,7 @@ LinkedListSequence<string>* write_list() {
 }
 
 //длина строки в буквах
-int Length(LinkedListSequence<string>* words)
-{
+int Length(LinkedListSequence<string>* words){
 	int length = 0;
 	for (int i = 0; i < words->GetLength(); i++) {
 		length += words->Get(i).length();
@@ -186,25 +186,26 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 // */
 
 /*
-template<class TKey, class TValue>
-void PrintKeyValue(TN Node, int lvl) {
+//template<class TKey, class TValue>
+void PrintKeyValue(TreeNode<string, int>* Node, int lvl) {
 	if (Node != nullptr) {
 		PrintKeyValue(Node->GetRight(), lvl + 1);
 		cout << "[" << Node->GetKey() << "] = " << Node->GetValue() << "\n";
 		PrintKeyValue(Node->GetLeft(), lvl + 1);
 	}
-}; */
-/*
-template<class TKey, class TValue>
-void PrintTree(TN Node, int lvl) {
+}; 
+
+//template<class TKey, class TValue>
+void PrintTree(TreeNode<string, int>* Node, int lvl) {
 	if (Node != nullptr) {
 		PrintTree(Node->GetRight(), lvl + 1);
-		for (int i = 0; i < lvl - Node->height(); i++) cout << "    ";
-		cout << "[" << lvl - Node->height() << "]";
+		for (int i = 0; i < lvl - Node->height(Node); i++) cout << "    ";
+		cout << "[" << lvl - Node->height(Node) << "]";
 		cout << " Key: " << Node->GetKey() << "Value: " << Node->GetValue() << "\n";
 		PrintTree(Node->GetLeft(), lvl + 1);
 	}
-}; */
+}; 
+*/
 
 void interface_Text() {
 	int choose1,choose2, size(0);

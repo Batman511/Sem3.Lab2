@@ -1,7 +1,8 @@
 #include <iostream>
 #include "Tests.h"
 #include "BinaryTree.h"
-#include "ConvertText.cpp"
+#include "ConvertText.h"
+#include "SparseVectorMatrix.h"
 //#define TN TreeNode<TKey, TValue>*
 using namespace std;
 
@@ -35,7 +36,7 @@ void PrintKeyValue(TN Node, int lvl) {
 
 int main() {
 	
-	//interface_Text();
+	interface_Text();
 	//Test_BinaryTree();
 
 	return 0;

@@ -21,7 +21,7 @@
     <ClCompile Include="Tests.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="SparseVectorsMatrix.cpp">
+    <ClCompile Include="SparseVectorsMatrix.hpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +50,13 @@
     <ClInclude Include="BinaryTree.hpp">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="ConvertText.cpp">
+    <ClInclude Include="ConvertText.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="SparseVectorMatrix.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvertText.hpp">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
