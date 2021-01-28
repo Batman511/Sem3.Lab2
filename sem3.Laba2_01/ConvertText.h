@@ -3,7 +3,7 @@
 #include <string>
 //#include "ConvertText.cpp"
 #include <sstream>
-#include "BinaryTree.h"
+#include "BinaryTree.hpp"
 using namespace std;
 
 LinkedListSequence<string>* file_list();

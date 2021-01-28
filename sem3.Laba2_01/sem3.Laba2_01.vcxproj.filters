@@ -21,7 +21,7 @@
     <ClCompile Include="Tests.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="SparseVectorsMatrix.hpp">
+    <ClCompile Include="SparseVectorMatrix.hpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,5 +1,5 @@
 #pragma once
-#include "BinaryTree.h"
+#include "BinaryTree.hpp"
 #include "List_Sequence.h"
 #include <iostream>
 //#include "ConvertText.h"
@@ -243,12 +243,12 @@ void interface_Text() {
 		//PrintKeyValue(Root->GetRoot(), Root->Height());
 	};
 	
-	/*
+	
 	IDictionary<string, int>* IDic=create_ID(words,size,choose1);
 	cout << "It is your IDictionary: \n";
 	BinaryTree<string, int> Tree = IDic->GetTree();
 	//PrintKeyValue(Tree.GetRoot(), Tree.Height()); 
-	*/
+	
 }
 
 

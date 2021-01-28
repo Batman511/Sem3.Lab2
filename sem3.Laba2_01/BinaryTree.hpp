@@ -15,7 +15,7 @@ public:
 	TreeNode* right;
 
 	//создание звена
-	TreeNode(TValue& value, TKey& key) {
+	TreeNode(TKey& key, TValue& value) {
 		this->value = value;
 		this->key = key;
 		this->left = nullptr;
@@ -65,6 +65,20 @@ public:
 	//задание ключа
 	void SetKey(const TKey& new_key) {
 		key = new_key;
+	}
+
+	//операторы
+	bool operator > (const TreeNode<TKey, TValue>& a) {
+		return key > a.GetKey();
+	}
+	bool operator < (const TreeNode<TKey, TValue>& a) {
+		return key < a.GetKey();
+	}
+	bool operator >= (const TreeNode<TKey, TValue>& a) {
+		return !(key < a.GetKey());
+	}
+	bool operator != (const TreeNode<TKey, TValue>& a) {
+		return !(key == a.GetKey());
 	}
 };
 
@@ -239,7 +253,7 @@ public:
 		else {
 			if ((tmp->GetLeft() == nullptr) && (tmp->GetRight() == nullptr)) {
 				if (end->GetLeft() == tmp)
-					end->SetLeft(nulptr);
+					end->SetLeft(nullptr);
 				else end->SetRight(nullptr);
 				delete tmp;
 				break;
@@ -332,26 +346,15 @@ public:
 		else this->Map(foo, this->root);
 	}
 
-	//операторы
-	bool operator > (const TreeNode<TKey, TValue>& a) {
-		return key > a.GetKey();
-	}
-	bool operator < (const TreeNode<TKey, TValue>& a) {
-		return key < a.GetKey();
-	}
-	bool operator >= (const TreeNode<TKey, TValue>& a) {
-		return !(key < a.GetKey());
-	}
-	bool operator != (const TreeNode<TKey, TValue>& a) {
-		return !(key == a.GetKey());
-	}
+	
 };
 
+/*
 //вывод пары
 ostream& operator<< (ostream& a, pair<long, long> para) {
 	a << para.first << para.second;
 	return a;
-}
+} */
 
 //словарь
 template <class TKey, class TElement>

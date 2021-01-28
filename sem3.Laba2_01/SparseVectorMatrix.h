@@ -1,5 +1,5 @@
 #pragma once
-#include "BinaryTree.h"
+#include "BinaryTree.hpp"
 #include "ArraySequence.h"
 #include <utility>
 using namespace std;

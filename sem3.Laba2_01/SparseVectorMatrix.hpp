@@ -1,8 +1,8 @@
 #pragma once
-#include "BinaryTree.h"
+#include "BinaryTree.hpp"
 #include "ArraySequence.h"
 #include <fstream>
-#include "SparseVectorMatrix.h"
+//#include "SparseVectorMatrix.hpp"
 #include <sstream>
 #include <iostream>
 #include <utility>

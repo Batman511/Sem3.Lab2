@@ -1,6 +1,6 @@
 #include "ArraySequence.h"
 #include "List_Sequence.h"
-#include "BinaryTree.h"
+//#include "BinaryTree.h"
 
 int Test_Array_Sequence() {
 	int* pr{ new int[5] {11,12,13,14,15} };
