@@ -105,22 +105,30 @@ ArraySequence<ArraySequence<string>*>* New_matrix() {
 
 
 ///////////////////подумать/////////////
-/*
-void PrintKeyValue(TreeNode<int, int>* Node, int lvl) {
+
+//выравнивание и вывод
+void _PrintKeyValue2(TreeNode<int, int>* Node, int lvl) {
 	if (Node != nullptr) {
-		PrintKeyValue(Node->GetRight(), lvl + 1);
-		cout << "[" << Node->GetKey() << "] = " << Node->GetValue() << "\n";
-		PrintKeyValue(Node->GetLeft(), lvl + 1);
+		_PrintKeyValue2(Node->GetLeft(), lvl);
+		cout << "[" << Node->GetKey() << "]";
+		cout << "  " << Node->GetValue() << "\n";
+		_PrintKeyValue2(Node->GetRight(), lvl);
 	}
-}; */
-/*
-template <class TValue>
-void PrintSparseVector(IDictionary<int, TValue>* IDic) {
-	PrinKeyValue(IDic->GetTree(),IDic->GetTree()->height());
+};
+
+void PrintKeyValue2(TreeNode<int, int>* Node, int lvl) {
+	cout << "\n//////////////////////////\n"
+		<< "It is your IDictionary: \n"
+		<< "[index] Value \n";
+	_PrintKeyValue2(Node, lvl);
+	cout << "//////////////////////////\n";
 }
 
-template <class TValue>
-void PrintSparseMatrix(IDictionary<pair<long, long>, TValue>* IDic) {
-	IDic->PrintKeyValue();
+void PrintSparseVector(IDictionary<int, int>* IDic) {
+	PrintKeyValue2(IDic->GetTree()->GetRoot(), IDic->GetTree()->Height());
 }
-*/
+
+
+void PrintSparseMatrix(IDictionary<pair<long, long>, int>* IDic) {
+	PrintKeyValue2(IDic->GetTree()->GetRoot(), IDic->GetTree()->Height());
+}

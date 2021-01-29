@@ -45,7 +45,7 @@ LinkedListSequence<string>* write_list() {
 	return list;
 }
 
-//длина строки в буквах
+//длина строки в буквах, учитывая пробелы
 int Length(LinkedListSequence<string>* words){
 	int length = 0;
 	for (int i = 0; i < words->GetLength(); i++) {
@@ -53,7 +53,6 @@ int Length(LinkedListSequence<string>* words){
 	}
 
 	length += words->GetLength() - 1;
-	//cout << "Length of string = " << length << endl;
 	return length;
 }
 
@@ -87,7 +86,7 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 			}
 		}
 		///////////////////////
-		cout << "\nNumbers of pages " << count_of_pages << "\n";
+		cout << "\nCount of pages " << count_of_pages << "\n";
 		
 		// все слова на первой странице
 		if (count_of_pages == 1) {
@@ -129,52 +128,90 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 		int wordscopy = length;
 		int a = length;
 		wordscopy -= (int)(sizepages / 2);
-		++count_of_pages;
+		//++count_of_pages;
 
-		if (wordscopy > 0) {
-			for (int i = length; i > 0; ) {
-				if ((count_of_pages % 10) == 0) {
-					i -= (int)(sizepages * 3 / 4);
-				}
-				else {
-					i -= sizepages;
-				}
-				++count_of_pages;
+		for (int i = length; i > 0; ) {
+			if (count_of_pages == 0) {
+				i -= (int)(sizepages / 2);
 			}
+			else if ((count_of_pages % 10) == 0) {
+				i -= (int)(sizepages * 3 / 4);
+			}
+			else {
+				i -= sizepages;
+			};
+			++count_of_pages;
 		}
 		///////////////////////
-		cout << "\nNumbers of pages " << count_of_pages << "\n";
+		cout << "\nCount of pages " << count_of_pages << "\n";
 
 		// все буквы на первой странице
 		if (count_of_pages == 1) {
-			for (int i = 0; i < sizepages && (a > 0); i + words->Get(i).length()) {
+			int i = words->Get(0).length();
+
+			while ((i < (int)(sizepages / 2)) && (a > 0)) {
 				IDic->Insert(words->Get(cur_size), 1);
+				if (cur_size != 0) 
+					  a -= words->Get(cur_size).length() + 1;
+				else  a -= words->Get(cur_size).length();
 				cur_size++;
-				a -= words->Get(i).length();
-			}
+				if (cur_size == words->GetLength()) break;
+				i + words->Get(cur_size).length() + 1;
+			};
 		} 
 		else {
-			for (int i = 0; i < count_of_pages; i++) {
+			for (int k = 0; k < count_of_pages; k++) {
+				int i = words->Get(k).length();
 				if (page_number == 1) {
-					for (int j = 0; (j < (int)(sizepages / 2)) && (a > 0); j + words->Get(i).length() + 1) {
+					/*for (int j = 0; (j < (int)(sizepages / 2)) && (a > 0); j + words->Get(cur_size).length() + 1) {
 						IDic->Insert(words->Get(cur_size), page_number);
+						a -= words->Get(cur_size).length() + 1;
 						cur_size++;
-						a -= words->Get(i).length() + 1;
-					}
+					}*/
+					
+					while ((i < (int)(sizepages / 2)) && (a > 0)) {
+						IDic->Insert(words->Get(cur_size), page_number);
+						if (cur_size != 0)
+							a -= words->Get(cur_size).length() + 1;
+						else  a -= words->Get(cur_size).length();
+						cur_size++;
+						if (cur_size == words->GetLength()) break;
+						i + words->Get(cur_size).length() + 1;
+					};
 				}
 				else if ((page_number % 10) == 0) {
-					for (int j = 0; (j < (int)(sizepages * 3 / 4)) && (a > 0); j + words->Get(i).length() + 1) {
+					/*for (int j = 0; (j < (int)(sizepages * 3 / 4)) && (a > 0); j + words->Get(cur_size).length() + 1) {
 						IDic->Insert(words->Get(cur_size), page_number);
+						a -= words->Get(cur_size).length() + 1;
 						cur_size++;
-						a -= words->Get(i).length() + 1;
-					}
+					}*/
+
+					while ((i < (int)(sizepages * 3 / 4)) && (a > 0)) {
+						IDic->Insert(words->Get(cur_size), page_number);
+						if (cur_size != 0)
+							a -= words->Get(cur_size).length() + 1;
+						else  a -= words->Get(cur_size).length();
+						cur_size++;
+						if (cur_size == words->GetLength()) break;
+						i + words->Get(cur_size).length() + 1;
+					};
 				}
 				else {
-					for (int j = 0; (j < sizepages) && (a > 0); j + words->Get(i).length() + 1) {
+					/*for (int j = 0; (j < sizepages) && (a > 0); j + words->Get(cur_size).length() + 1) {
 						IDic->Insert(words->Get(cur_size), page_number);
+						a -= words->Get(cur_size).length() + 1;
 						cur_size++;
-						a -= words->Get(i).length() + 1;
-					}
+					}*/
+
+					while ((i < sizepages) && (a > 0)) {
+						IDic->Insert(words->Get(cur_size), page_number);
+						if (cur_size != 0)
+							a -= words->Get(cur_size).length() + 1;
+						else  a -= words->Get(cur_size).length();
+						cur_size++;
+						if (cur_size == words->GetLength()) break;
+						i + words->Get(cur_size).length() + 1;
+					};
 				}
 				page_number++;
 			}
