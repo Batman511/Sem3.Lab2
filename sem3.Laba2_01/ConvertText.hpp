@@ -35,8 +35,6 @@ LinkedListSequence<string>* write_list() {
 	cout << "Please, enter your text: \n";
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	getline(cin, text);
-	//cin >> text;
-
 	
 	stringstream s;
 	s.str(text);
@@ -59,7 +57,7 @@ int Length(LinkedListSequence<string>* words){
 	return length;
 }
 
-///*
+
 //создание словаря  
 //choose:  1-деление по словам  2-деление по символам 
 IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizepages, int choose) {
@@ -88,6 +86,8 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 				++count_of_pages;
 			}
 		}
+		///////////////////////
+		cout << "\nNumbers of pages " << count_of_pages << "\n";
 		
 		// все слова на первой странице
 		if (count_of_pages == 1) {
@@ -142,8 +142,8 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 				++count_of_pages;
 			}
 		}
-		///////////////////////вывод кол-ва страниц позже убрать
-		cout << "Numbers of pages " << count_of_pages << "\n";
+		///////////////////////
+		cout << "\nNumbers of pages " << count_of_pages << "\n";
 
 		// все буквы на первой странице
 		if (count_of_pages == 1) {
@@ -156,14 +156,14 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 		else {
 			for (int i = 0; i < count_of_pages; i++) {
 				if (page_number == 1) {
-					for (int j = 0; j < (int)(sizepages / 2) && (a > 0); j + words->Get(i).length() + 1) {
+					for (int j = 0; (j < (int)(sizepages / 2)) && (a > 0); j + words->Get(i).length() + 1) {
 						IDic->Insert(words->Get(cur_size), page_number);
 						cur_size++;
 						a -= words->Get(i).length() + 1;
 					}
 				}
 				else if ((page_number % 10) == 0) {
-					for (int j = 0; j < (int)(sizepages * 3 / 4) && (a > 0); j + words->Get(i).length() + 1) {
+					for (int j = 0; (j < (int)(sizepages * 3 / 4)) && (a > 0); j + words->Get(i).length() + 1) {
 						IDic->Insert(words->Get(cur_size), page_number);
 						cur_size++;
 						a -= words->Get(i).length() + 1;
@@ -180,32 +180,55 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 			}
 		}
 	}
-
 	return IDic;
 } 
-// */
 
-/*
-//template<class TKey, class TValue>
-void PrintKeyValue(TreeNode<string, int>* Node, int lvl) {
+//максимальная длина Key
+LinkedListSequence<int>* listlength = new LinkedListSequence<int>();
+int GetMaxLength(TreeNode<string, int>* Node) {
 	if (Node != nullptr) {
-		PrintKeyValue(Node->GetRight(), lvl + 1);
-		cout << "[" << Node->GetKey() << "] = " << Node->GetValue() << "\n";
-		PrintKeyValue(Node->GetLeft(), lvl + 1);
+		GetMaxLength(Node->GetLeft());
+		listlength->Append(Node->GetKey().length());		
+		GetMaxLength(Node->GetRight());
+	}
+
+	int maxlength = 0;
+	for (int i = 0; i < listlength->GetLength(); i++) {
+		if (listlength->Get(i) > maxlength) maxlength = listlength->Get(i);
+	}
+
+	return maxlength;
+}
+
+//выравнивание и вывод
+void _PrintKeyValue(TreeNode<string, int>* Node, int lvl,int maxlength) {
+	if (Node != nullptr) {
+		_PrintKeyValue(Node->GetLeft(), lvl, maxlength);
+		cout << "[" << Node->GetKey() << "]";
+		for (int i = 0; i < (maxlength-Node->GetKey().length()); i++) cout << " "; 
+		cout << " on page " << Node->GetValue() << "\n";
+		_PrintKeyValue(Node->GetRight(), lvl, maxlength);
 	}
 }; 
+void PrintKeyValue(TreeNode<string, int>* Node, int lvl, int maxlength) {
+	cout<< "\n//////////////////////////\n"
+		<< "It is your IDictionary: \n"
+		<< "[word] on page N\n";
+	_PrintKeyValue(Node, lvl,maxlength);
+	cout << "//////////////////////////\n";
+}
 
-//template<class TKey, class TValue>
+
 void PrintTree(TreeNode<string, int>* Node, int lvl) {
 	if (Node != nullptr) {
-		PrintTree(Node->GetRight(), lvl + 1);
-		for (int i = 0; i < lvl - Node->height(Node); i++) cout << "    ";
-		cout << "[" << lvl - Node->height(Node) << "]";
-		cout << " Key: " << Node->GetKey() << "Value: " << Node->GetValue() << "\n";
-		PrintTree(Node->GetLeft(), lvl + 1);
+		PrintTree(Node->GetLeft(), lvl);
+		for (int i = 0; i < lvl - Node->height(); i++) cout << "         ";
+		cout << "[" << lvl - Node->height() << "]";
+		cout << " Key: " << Node->GetKey() << " Value: " << Node->GetValue() << "\n";
+		PrintTree(Node->GetRight(), lvl);
 	}
 }; 
-*/
+
 
 void interface_Text() {
 	int choose1,choose2, size(0);
@@ -228,27 +251,16 @@ void interface_Text() {
 	
 	if (choose2 == 1) {
 		words = file_list();
+		cout << "Your text:\n";
 		words->Print();
-		//IDictionary<string, int>* IDic = create_ID(words, size, choose1);
-		//cout << "It is your IDictionary: \n";
-		//BinaryTree<string, int>* Root = IDic->GetRoot();
-		//PrintKeyValue(Root->GetRoot(), Root->Height());
 	}
 	else {
 		words = write_list();
-		words->Print();
-		//IDictionary<string, int>* IDic = create_ID(words, size, choose1);
-		//cout << "It is your IDictionary: \n";
-		//BinaryTree<string, int>* Root = IDic->GetRoot();
-		//PrintKeyValue(Root->GetRoot(), Root->Height());
 	};
 	
-	
 	IDictionary<string, int>* IDic=create_ID(words,size,choose1);
-	cout << "It is your IDictionary: \n";
-	BinaryTree<string, int> Tree = IDic->GetTree();
-	//PrintKeyValue(Tree.GetRoot(), Tree.Height()); 
-	
+	BinaryTree<string, int>* Tree = IDic->GetTree();
+	PrintKeyValue(Tree->GetRoot(), Tree->Height(), GetMaxLength(Tree->GetRoot()));
 }
 
 

@@ -52,12 +52,11 @@ public:
 		return right;
 	}
 
-	int height(TN subTree) {
+	int height() {
 		int length = 0;
-
-		if (subTree == nullptr) return 0;
+		if (this == nullptr) return 0;
 		else {
-			length = 1 + max(height(subTree->GetLeft()), height(subTree->GetRight()));
+			length = 1 + max(this->GetLeft()->height(), this->GetRight()->height());
 			return length;
 		}
 	}
@@ -76,6 +75,9 @@ public:
 	}
 	bool operator >= (const TreeNode<TKey, TValue>& a) {
 		return !(key < a.GetKey());
+	}
+	bool operator == (const TreeNode<TKey, TValue>& a) {
+		return key == a.GetKey();
 	}
 	bool operator != (const TreeNode<TKey, TValue>& a) {
 		return !(key == a.GetKey());
@@ -229,11 +231,6 @@ public:
 		TN tmp = root;
 		TN end = nullptr;
 
-		/*if (tmp->left == nullptr && tmp->right == nullptr && tmp->key == key) {
-			delete tmp;
-			break;
-		}*/
-
 		while ((tmp != nullptr) && (tmp->key != key)) {
 			if (tmp->GetKey() > key) {
 				end = tmp;
@@ -377,7 +374,7 @@ public:
 		return Tree->GetCount();
 	}
 
-	TreeNode<TKey, TElement>* GetTree() {
+	BinaryTree<TKey, TElement>* GetTree() {
 		return Tree;
 	}
 

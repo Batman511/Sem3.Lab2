@@ -4,7 +4,7 @@
 template <class TKey, class TValue>
 class TreeNode {
 public:
-	TreeNode(TValue& value, TKey& key);
+	TreeNode(TKey& key, TValue& value);
 	TreeNode();
 	TKey GetKey();
 	TValue GetValue();
@@ -13,7 +13,7 @@ public:
 	void SetKey(const TKey& new_key);
 	TN GetLeft() const;
 	TN GetRight() const;
-	int height(TN subTree);
+	int height();
 };
 
 
