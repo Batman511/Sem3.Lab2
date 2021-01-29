@@ -139,25 +139,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="SparseVectorMatrix.hpp">
+    <ClCompile Include="SparseVectorMatrix.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArraySequence.h" />
-    <ClInclude Include="BinaryTree.hpp" />
     <ClInclude Include="BinaryTree.h" />
-    <ClInclude Include="ConvertText.hpp">
+    <ClInclude Include="ConvertText.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="ConvertText.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Linked_List.h" />
     <ClInclude Include="List_Sequence.h" />
     <ClInclude Include="Sequence.h" />
-    <ClInclude Include="SparseVectorMatrix.h" />
-    <ClInclude Include="Tests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

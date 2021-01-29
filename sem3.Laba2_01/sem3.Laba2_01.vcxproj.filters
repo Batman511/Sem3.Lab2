@@ -18,10 +18,7 @@
     <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Tests.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="SparseVectorMatrix.hpp">
+    <ClCompile Include="SparseVectorMatrix.h">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,22 +38,10 @@
     <ClInclude Include="Sequence.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="Tests.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="BinaryTree.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="BinaryTree.hpp">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="ConvertText.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="SparseVectorMatrix.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="ConvertText.hpp">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>

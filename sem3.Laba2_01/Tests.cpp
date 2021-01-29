@@ -1,3 +1,4 @@
+#pragma once
 #include "ArraySequence.h"
 #include "List_Sequence.h"
 //#include "BinaryTree.h"
