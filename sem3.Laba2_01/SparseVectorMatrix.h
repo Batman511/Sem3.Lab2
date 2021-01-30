@@ -3,20 +3,8 @@
 #include "ArraySequence.h"
 #include <fstream>
 #include <sstream>
-//#include <iostream>
 #include <utility>
 using namespace std;
-
-/*
-template <class T>
-void Print(Sequence<T>* seq, const int length) {
-	cout << "Your sequence: \n";
-	for (int i = 0; i < length; i++) {
-		cout << "[" << seq->Get(i) << "] ";
-	}
-	cout << "\n";
-}
-*/
 
 //получение вектора
 template <class T>
@@ -39,10 +27,9 @@ ArraySequence<T>* New_vector() {
 //получение матрицы
 template <class T>
 ArraySequence<ArraySequence<T>*>* New_matrix() {
-	ArraySequence<T>* lines; // = new ArraySequence<int>();
+	ArraySequence<T>* lines;
 	ArraySequence<ArraySequence<T>*>* matrix = new ArraySequence<ArraySequence<T>*>();
 	
-	//string element;
 	string s;
 	int count_of_lines = 0;
 	int count_of_elem = 0;

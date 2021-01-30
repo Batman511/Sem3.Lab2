@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="SparseVectorMatrix.h">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="SparseVectorMatrix.h">
+    <ClCompile Include="Interface.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

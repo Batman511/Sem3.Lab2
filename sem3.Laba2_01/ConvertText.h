@@ -84,7 +84,7 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 			}
 		}
 		///////////////////////
-		cout << "\nCount of pages " << count_of_pages << "\n";
+		cout << "\nCount of pages " << count_of_pages;
 		
 		// все слова на первой странице
 		if (count_of_pages == 1) {
@@ -126,7 +126,6 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 		int wordscopy = length;
 		int a = length;
 		wordscopy -= (int)(sizepages / 2);
-		//++count_of_pages;
 
 		for (int i = length; i > 0; ) {
 			if (count_of_pages == 0) {
@@ -141,7 +140,7 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 			++count_of_pages;
 		}
 		///////////////////////
-		cout << "\nCount of pages " << count_of_pages << "\n";
+		cout << "\nCount of pages " << count_of_pages;
 
 		// все буквы на первой странице
 		if (count_of_pages == 1) {
@@ -161,12 +160,6 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 			for (int k = 0; k < count_of_pages; k++) {
 				int i = words->Get(k).length();
 				if (page_number == 1) {
-					/*for (int j = 0; (j < (int)(sizepages / 2)) && (a > 0); j + words->Get(cur_size).length() + 1) {
-						IDic->Insert(words->Get(cur_size), page_number);
-						a -= words->Get(cur_size).length() + 1;
-						cur_size++;
-					}*/
-					
 					while ((i < (int)(sizepages / 2)) && (a > 0)) {
 						IDic->Insert(words->Get(cur_size), page_number);
 						if (cur_size != 0)
@@ -178,12 +171,6 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 					};
 				}
 				else if ((page_number % 10) == 0) {
-					/*for (int j = 0; (j < (int)(sizepages * 3 / 4)) && (a > 0); j + words->Get(cur_size).length() + 1) {
-						IDic->Insert(words->Get(cur_size), page_number);
-						a -= words->Get(cur_size).length() + 1;
-						cur_size++;
-					}*/
-
 					while ((i < (int)(sizepages * 3 / 4)) && (a > 0)) {
 						IDic->Insert(words->Get(cur_size), page_number);
 						if (cur_size != 0)
@@ -195,12 +182,6 @@ IDictionary<string, int>* create_ID(LinkedListSequence<string>* words, int sizep
 					};
 				}
 				else {
-					/*for (int j = 0; (j < sizepages) && (a > 0); j + words->Get(cur_size).length() + 1) {
-						IDic->Insert(words->Get(cur_size), page_number);
-						a -= words->Get(cur_size).length() + 1;
-						cur_size++;
-					}*/
-
 					while ((i < sizepages) && (a > 0)) {
 						IDic->Insert(words->Get(cur_size), page_number);
 						if (cur_size != 0)
@@ -250,7 +231,7 @@ void PrintKeyValue(TreeNode<string, int>* Node, int lvl, int maxlength) {
 		<< "It is your IDictionary: \n"
 		<< "[word] on page N\n";
 	_PrintKeyValue(Node, lvl,maxlength);
-	cout << "//////////////////////////\n";
+	cout << "---------------------------\n";
 }
 
 
@@ -269,7 +250,7 @@ void interface_Text() {
 	int choose1,choose2, size(0);
 
 	//выбор типа деления строки
-	cout << "//////////////////////Alphabetical index task//////////////////////\n" 
+	cout << "\n//////////////////////Alphabetical index task//////////////////////\n" 
 		 << "Enter type of page length:\n" << "1. Number of words\n" << "2. Number of symbols\n";
 	cin >> choose1;
 	cout << "Enter the size of pages: \n";

@@ -307,9 +307,8 @@ public:
 			Insert(data);
 		}
 	} */
-
-	//вывод дерева
 	/*
+	//вывод дерева
 	void PrintTree(TN Node, int lvl) {
 		if (Node != nullptr) {
 			//throw exception("Empty");
