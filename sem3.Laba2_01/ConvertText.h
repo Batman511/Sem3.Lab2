@@ -247,12 +247,21 @@ void PrintTree(TreeNode<string, int>* Node, int lvl) {
 
 
 void interface_Text() {
+	string choose11{ "0" }, choose22{ "0" };
 	int choose1,choose2, size(0);
 
 	//выбор типа деления строки
 	cout << "\n//////////////////////Alphabetical index task//////////////////////\n" 
 		 << "Enter type of page length:\n" << "1. Number of words\n" << "2. Number of symbols\n";
-	cin >> choose1;
+	do {
+		if (choose11 == "0") cin >> choose11;
+		else if (choose11 != "1" && choose11 != "2") {
+			std::cout << "ERROR. You need choose a number from 1 to 2 \n";
+			cin >> choose1;
+		}
+	} while (choose11 != "1" && choose11 != "2");
+	choose1 = stoi(choose11);
+
 	cout << "Enter the size of pages: \n";
 	do {
 		cin >> size;
@@ -261,7 +270,15 @@ void interface_Text() {
 
 	// выбор текста
 	cout << "How do you want to enter your text? \n" << "1.From File \n" << "2.New text by hand \n" ;
-	cin >> choose2;
+	do {
+		if (choose22 == "0") cin >> choose22;
+		else if (choose22 != "1" && choose22 != "2") {
+			std::cout << "ERROR. You need choose a number from 1 to 2 \n";
+			cin >> choose22;
+		}
+	} while (choose22 != "1" && choose22 != "2");
+	choose2 = stoi(choose22);
+
 	LinkedListSequence<string>* words;
 	words = new LinkedListSequence<string>();
 	
@@ -278,8 +295,3 @@ void interface_Text() {
 	BinaryTree<string, int>* Tree = IDic->GetTree();
 	PrintKeyValue(Tree->GetRoot(), Tree->Height(), GetMaxLength(Tree->GetRoot()));
 }
-
-
-
-
-

@@ -142,6 +142,7 @@
     <ClCompile Include="SparseVectorMatrix.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArraySequence.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Linked_List.h" />
     <ClInclude Include="List_Sequence.h" />
     <ClInclude Include="Sequence.h" />
+    <ClInclude Include="Tests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

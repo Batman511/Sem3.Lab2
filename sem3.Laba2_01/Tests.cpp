@@ -1,7 +1,42 @@
 #pragma once
 #include "ArraySequence.h"
 #include "List_Sequence.h"
-//#include "BinaryTree.h"
+#include <string>
+#include "Tests.h"
+using namespace std;
+
+void interface_Tests() {
+	string choose1{ "0" };
+	int choose(0);
+	
+		cout << "Choose the Test:\n"
+			<< "1. Test_Array_Sequence \n2. Test_Dynamic_Array \n3. Test_Linked_list \n4. Test_List_Sequence \n";
+		do {
+			if (choose1 == "0") cin >> choose1;
+			else if (choose1 != "1" && choose1 != "2" && choose1 != "3" && choose1 != "4") {
+				std::cout << "ERROR. You need choose a number from 1 to 4 \n";
+				cin >> choose1;
+			}
+		} while (choose1 != "1" && choose1 != "2" && choose1 != "3" && choose1 != "4");
+		choose = stoi(choose1);
+		cout << "\n";
+		switch (choose) {
+		case 1:
+			Test_Array_Sequence();
+			break;
+		case 2:
+			Test_Dynamic_Array();
+			break;
+		case 3:
+			Test_Linked_list();
+			break;
+		case 4:
+			Test_List_Sequence();
+			break;
+		default: std::cout << "ERROR. You kill me.";
+		}
+		cout << "-----------------------------------\n";
+}
 
 int Test_Array_Sequence() {
 	int* pr{ new int[5] {11,12,13,14,15} };

@@ -1,3 +1,4 @@
+#include "Tests.h"
 #include "ConvertText.h"
 #include "SparseVectorMatrix.h"
 using namespace std;
@@ -51,17 +52,19 @@ void PrintSparseMatrix(IDictionary<pair<long, long>, TValue>* IDic) {
 }
 
 void interface_Sparse() {
-	int choose;
+	string choose1{ "0" };
+	int choose(0);
 
 	cout << "\n//////////////////////Sparse Vector & Matrix task//////////////////////\n"
 		<< "1. Make sparse vector \n" << "2. Make sparse matrix \n";
-	cin >> choose;
 	do {
-		if (choose != 1 && choose != 2) {
-			std::cout << "ERROR. You need choose 1 or 2 \n";
-			cin >> choose;
+		if (choose1 == "0") cin >> choose1;
+		else if (choose1 != "1" && choose1 != "2") {
+			std::cout << "ERROR. You need choose a number from 1 to 2 \n";
+			cin >> choose1;
 		}
-	} while (choose != 1 && choose != 2);
+	} while (choose1 != "1" && choose1 != "2");
+	choose = stoi(choose1);
 
 	if (choose == 1) {
 		PrintSparseVector(MakeSparseVector<int, int>(New_vector<int>()));
@@ -96,7 +99,7 @@ int main() {
 			interface_Sparse();
 			break;
 		case 3:
-			//Tests();
+			interface_Tests();
 			break;
 		case 4:
 			std::cout << "\n ***** Good job ***** \n";
